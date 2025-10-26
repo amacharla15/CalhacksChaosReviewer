@@ -1,0 +1,80 @@
+{
+  "name": "chaos-reviewer",
+  "displayName": "Chaos Reviewer",
+  "description": "Send logs/text to your Chaos Reviewer agent via a GitHub Gist bridge and see the two-bubble reply inside VS Code.",
+  "version": "0.1.0",
+  "publisher": "your-name",
+  "engines": { "vscode": "^1.84.0" },
+  "icon": "images/icon.png",
+  "categories": ["Other"],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:chaosReviewer.sendSelectionAsLog",
+    "onCommand:chaosReviewer.sendText",
+    "onCommand:chaosReviewer.openPanel"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "chaosReviewer.sendSelectionAsLog",
+        "title": "Chaos Reviewer: Send Selection As Log"
+      },
+      {
+        "command": "chaosReviewer.sendText",
+        "title": "Chaos Reviewer: Send Text"
+      },
+      {
+        "command": "chaosReviewer.openPanel",
+        "title": "Chaos Reviewer: Open Panel"
+      }
+    ],
+    "configuration": {
+      "title": "Chaos Reviewer",
+      "properties": {
+        "chaosReviewer.gistToken": {
+          "type": "string",
+          "markdownDescription": "GitHub **Personal Access Token** with the `gist` scope. Stored in VS Code settings.",
+          "default": ""
+        },
+        "chaosReviewer.gistId": {
+          "type": "string",
+          "description": "ID of the existing gist the agent polls (public or secret).",
+          "default": ""
+        },
+        "chaosReviewer.requestFile": {
+          "type": "string",
+          "description": "Filename (in the gist) the extension PATCHes with requests.",
+          "default": "chaos-request.json"
+        },
+        "chaosReviewer.responseFile": {
+          "type": "string",
+          "description": "Filename (in the gist) the agent writes responses to.",
+          "default": "chaos-response.json"
+        },
+        "chaosReviewer.pollSeconds": {
+          "type": "number",
+          "description": "Polling interval (seconds) for reading responses.",
+          "default": 6,
+          "minimum": 2
+        },
+        "chaosReviewer.responseTimeoutSeconds": {
+          "type": "number",
+          "description": "Give up waiting after this many seconds.",
+          "default": 45,
+          "minimum": 5
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "package": "npm run compile && vsce package",
+    "package:new": "npm run compile && npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/vscode": "^1.84.0",
+    "typescript": "^5.4.0"
+  }
+}

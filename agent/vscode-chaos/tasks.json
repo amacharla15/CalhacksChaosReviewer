@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "options": { "shell": { "executable": "/bin/bash", "args": ["-lc"] } },
+  "tasks": [
+    {
+      "label": "Build (tee) — Python",
+      "type": "shell",
+      "command": "python3 main.py 2>&1 | tee .vscode/chaos_tail.log; exit ${PIPESTATUS[0]}",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build (tee) — Node/TS",
+      "type": "shell",
+      "command": "npm run build 2>&1 | tee .vscode/chaos_tail.log; exit ${PIPESTATUS[0]}",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build (tee) — C++",
+      "type": "shell",
+      "command": "clang++ -std=c++20 src/*.cpp -o app 2>&1 | tee .vscode/chaos_tail.log; exit ${PIPESTATUS[0]}",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

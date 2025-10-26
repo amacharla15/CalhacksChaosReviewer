@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8">
+<title>Chaos Reviewer</title>
+<style>body{font:16px system-ui;margin:2rem;max-width:720px}textarea{width:100%;height:180px}pre{background:#0f172a;color:#e2e8f0;padding:12px;border-radius:10px;white-space:pre-wrap}.msg{margin:.5rem 0}</style>
+<h1>Chaos Reviewer</h1>
+<p>Paste a build/test error or click a button.</p>
+<textarea id="log" placeholder="Paste error log here…"></textarea><br>
+<label>Language: <select id="lang"><option>cpp</option><option>python</option><option>typescript</option></select></label>
+<button id="send">Send Error</button>
+<button id="hi">Send Greeting</button>
+<button id="ty">Send Thanks</button>
+<div id="out"></div>
+<script>
+const out=document.getElementById('out');
+function bubble(t){const d=document.createElement('div');d.className='msg';d.innerHTML=`<pre>${t}</pre>`;out.appendChild(d);}
+async function post(b){const r=await fetch('http://localhost:8787/chaos',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});return r.json();}
+document.getElementById('send').onclick=async()=>{const log=document.getElementById('log').value;const lang=document.getElementById('lang').value;const res=await post({context:{lang},log_tail:log});(res.lines||[]).forEach(bubble);};
+document.getElementById('hi').onclick=async()=>{const res=await post({text:'hi'});(res.lines||[]).forEach(bubble);};
+document.getElementById('ty').onclick=async()=>{const res=await post({text:'thanks'});(res.lines||[]).forEach(bubble);};
+</script>

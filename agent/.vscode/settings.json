@@ -1,0 +1,7 @@
+{
+  "chaos.webhookUrl": "http://172.30.182.189:8787/chaos",
+  "chaos.backupWebhookUrl": "",
+  "chaos.tailFile": ".vscode/chaos_tail.log",
+  "chaos.lang": "auto",
+  "chaos.tailLines": 200
+}

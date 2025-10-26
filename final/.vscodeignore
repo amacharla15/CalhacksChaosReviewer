@@ -1,0 +1,8 @@
+.vscode/**
+src/**
+**/*.map
+**/*.ts
+.git/**
+.github/**
+.vscode-test/**
+images/*.xcf

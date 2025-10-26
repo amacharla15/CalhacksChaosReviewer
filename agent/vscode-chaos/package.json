@@ -1,0 +1,62 @@
+{
+  "name": "chaos-reviewer",
+  "displayName": "Chaos Reviewer",
+  "version": "0.0.1",
+  "publisher": "your-id",
+  "engines": { "vscode": "^1.90.0" },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:chaos.sendTail",
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      { "command": "chaos.sendTail", "title": "Chaos: Send Tail" }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Chaos Reviewer",
+      "properties": {
+        "chaos.webhookUrl": {
+          "type": "string",
+          "default": "https://YOUR-HOSTED-AGENT/chaos",
+          "description": "Primary webhook for your agent."
+        },
+        "chaos.backupWebhookUrl": {
+          "type": "string",
+          "default": "http://localhost:8787/chaos",
+          "description": "Backup webhook when primary is down."
+        },
+        "chaos.tailFile": {
+          "type": "string",
+          "default": ".vscode/chaos_tail.log",
+          "description": "Path to the build log to tail."
+        },
+        "chaos.lang": {
+          "type": "string",
+          "enum": ["auto", "cpp", "python", "typescript"],
+          "default": "auto",
+          "description": "Language to hint for quips/heuristics."
+        },
+        "chaos.tailLines": {
+          "type": "number",
+          "default": 200,
+          "description": "How many trailing lines to send."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "vsce:package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.4.0",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    // If you need it: "undici": "^6.19.8"
+  }
+}
