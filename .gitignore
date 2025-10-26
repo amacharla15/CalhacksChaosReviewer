@@ -1,0 +1,8 @@
+final/settings.json
+.venv/
+agent/.venv/
+node_modules/
+agent/vscode-chaos/node_modules/
+agent/vscode-chaos/dist/
+.vscode/
+**/*.log

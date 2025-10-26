@@ -1,0 +1,9 @@
+{
+  "chaosReviewer.gistToken": "YOUR_SECRET_HERE",
+  "chaosReviewer.gistId": "YOUR_SECRET_HERE",
+  "chaosReviewer.requestFile": "chaos-request.json",
+  "chaosReviewer.responseFile": "chaos-response.json",
+  "chaosReviewer.pollSeconds": 6,
+  "chaosReviewer.YOUR_SECRET_HERE": 45
+  
+}
