@@ -1,5 +1,7 @@
 Youtube Link: https://youtu.be/6zm-sZNBaZI?si=T544jo37gzvgoSuM
 
+Agent link: https://agentverse.ai/agents/details/agent1qgsz86macef9mjfe2m6ry2g5uqusuwechxxa4atrph9qla47694qs4cevz3/profile (live until November 24 2025 to Use)
+
 # Chaos Reviewer — A brain rot code REVIEWER
 **Handle:** @chaos-reviewer  
 **Category/Tags:** build-triage, compiler-errors, logs, chat-protocol, devtools, gcc, clang, pytest, typescript, cpp, tsc
